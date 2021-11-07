@@ -7,33 +7,33 @@ import 'defines.dart';
 enum _SettingsTileType { simple, switchTile }
 
 abstract class AbstractTile extends StatelessWidget {
-  const AbstractTile({Key? key}) : super(key: key);
+  const AbstractTile({Key key}) : super(key: key);
 }
 
 class SettingsTile extends AbstractTile {
-  final String? title;
-  final Widget? titleWidget;
-  final int? titleMaxLines;
-  final String? subtitle;
-  final Widget? subtitleWidget;
-  final int? subtitleMaxLines;
-  final Widget? leading;
-  final Widget? trailing;
-  final Icon? iosChevron;
-  final EdgeInsetsGeometry? iosChevronPadding;
-  final VoidCallback? onTap;
-  final Function(BuildContext context)? onPressed;
-  final Function(bool value)? onToggle;
-  final bool? switchValue;
+  final String title;
+  final Widget titleWidget;
+  final int titleMaxLines;
+  final String subtitle;
+  final Widget subtitleWidget;
+  final int subtitleMaxLines;
+  final Widget leading;
+  final Widget trailing;
+  final Icon iosChevron;
+  final EdgeInsetsGeometry iosChevronPadding;
+  final VoidCallback onTap;
+  final Function(BuildContext context) onPressed;
+  final Function(bool value) onToggle;
+  final bool switchValue;
   final bool enabled;
-  final TextStyle? titleTextStyle;
-  final TextStyle? subtitleTextStyle;
-  final Color? switchActiveColor;
+  final TextStyle titleTextStyle;
+  final TextStyle subtitleTextStyle;
+  final Color switchActiveColor;
   final _SettingsTileType _tileType;
-  final TargetPlatform? platform;
+  final TargetPlatform platform;
 
   const SettingsTile({
-    Key? key,
+    Key key,
     this.title,
     this.titleWidget,
     this.titleMaxLines,
@@ -59,7 +59,7 @@ class SettingsTile extends AbstractTile {
         super(key: key);
 
   const SettingsTile.switchTile({
-    Key? key,
+    Key key,
     this.title,
     this.titleWidget,
     this.titleMaxLines,
@@ -69,8 +69,8 @@ class SettingsTile extends AbstractTile {
     this.enabled = true,
     this.trailing,
     this.subtitleWidget,
-    required this.onToggle,
-    required this.switchValue,
+    @required this.onToggle,
+    @required this.switchValue,
     this.titleTextStyle,
     this.subtitleTextStyle,
     this.switchActiveColor,
@@ -137,7 +137,7 @@ class SettingsTile extends AbstractTile {
         iosChevronPadding: iosChevronPadding,
         hasDetails: false,
         leading: leading,
-        onPress: onTapFunction(context) as void Function()?,
+        onPress: onTapFunction(context) as void Function(),
         labelTextStyle: titleTextStyle,
         subtitleTextStyle: subtitleTextStyle,
         valueTextStyle: subtitleTextStyle,
@@ -149,7 +149,7 @@ class SettingsTile extends AbstractTile {
     if (_tileType == _SettingsTileType.switchTile) {
       return SwitchListTile(
         secondary: leading,
-        value: switchValue!,
+        value: switchValue,
         activeColor: switchActiveColor,
         onChanged: enabled ? onToggle : null,
         title: titleWidget ??
@@ -162,7 +162,7 @@ class SettingsTile extends AbstractTile {
         subtitle: subtitleWidget ??
             (subtitle != null
                 ? Text(
-                    subtitle!,
+                    subtitle,
                     style: subtitleTextStyle,
                     maxLines: subtitleMaxLines,
                     overflow: TextOverflow.ellipsis,
@@ -175,7 +175,7 @@ class SettingsTile extends AbstractTile {
         subtitle: subtitleWidget ??
             (subtitle != null
                 ? Text(
-                    subtitle!,
+                    subtitle,
                     style: subtitleTextStyle,
                     maxLines: subtitleMaxLines,
                     overflow: TextOverflow.ellipsis,
@@ -184,18 +184,18 @@ class SettingsTile extends AbstractTile {
         leading: leading,
         enabled: enabled,
         trailing: trailing,
-        onTap: onTapFunction(context) as void Function()?,
+        onTap: onTapFunction(context) as void Function(),
       );
     }
   }
 
-  Function? onTapFunction(BuildContext context) =>
+  Function onTapFunction(BuildContext context) =>
       onTap != null || onPressed != null
           ? () {
               if (onPressed != null) {
-                onPressed!.call(context);
+                onPressed.call(context);
               } else {
-                onTap!.call();
+                onTap.call();
               }
             }
           : null;
@@ -205,7 +205,7 @@ class CustomTile extends AbstractTile {
   final Widget child;
 
   CustomTile({
-    required this.child,
+    @required this.child,
   });
   @override
   Widget build(BuildContext context) {

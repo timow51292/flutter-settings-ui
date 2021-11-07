@@ -15,9 +15,9 @@ class CupertinoSettingsSection extends StatelessWidget {
 
   final List<Widget> items;
 
-  final Widget? header;
+  final Widget header;
   final EdgeInsetsGeometry headerPadding;
-  final Widget? footer;
+  final Widget footer;
 
   @override
   Widget build(BuildContext context) {

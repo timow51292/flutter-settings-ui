@@ -8,17 +8,17 @@ import 'defines.dart';
 
 // ignore: must_be_immutable
 class SettingsSection extends AbstractSection {
-  final List<AbstractTile>? tiles;
-  final TextStyle? titleTextStyle;
-  final int? maxLines;
-  final Widget? subtitle;
+  final List<AbstractTile> tiles;
+  final TextStyle titleTextStyle;
+  final int maxLines;
+  final Widget subtitle;
   final EdgeInsetsGeometry subtitlePadding;
-  final TargetPlatform? platform;
+  final TargetPlatform platform;
 
   SettingsSection({
-    Key? key,
-    String? title,
-    Widget? titleWidget,
+    Key key,
+    String title,
+    Widget titleWidget,
     EdgeInsetsGeometry titlePadding = defaultTitlePadding,
     this.maxLines,
     this.subtitle,
@@ -54,7 +54,7 @@ class SettingsSection extends AbstractSection {
 
   Widget iosSection() {
     return CupertinoSettingsSection(
-      tiles!,
+      tiles,
       header: Column(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.start,
@@ -63,7 +63,7 @@ class SettingsSection extends AbstractSection {
           if (title != null || titleWidget != null)
             titleWidget ??
                 Text(
-                  title!,
+                  title,
                   style: titleTextStyle,
                   maxLines: maxLines,
                   overflow: TextOverflow.ellipsis,
@@ -75,7 +75,7 @@ class SettingsSection extends AbstractSection {
             ),
         ],
       ),
-      headerPadding: titlePadding!,
+      headerPadding: titlePadding,
     );
   }
 
@@ -83,9 +83,9 @@ class SettingsSection extends AbstractSection {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       if (title != null)
         Padding(
-          padding: titlePadding!,
+          padding: titlePadding,
           child: Text(
-            title!,
+            title,
             style: titleTextStyle ??
                 TextStyle(
                   color: Theme.of(context).accentColor,
@@ -103,11 +103,11 @@ class SettingsSection extends AbstractSection {
       ListView.separated(
         physics: NeverScrollableScrollPhysics(),
         shrinkWrap: true,
-        itemCount: tiles!.length,
+        itemCount: tiles.length,
         separatorBuilder: (BuildContext context, int index) =>
             Divider(height: 1),
         itemBuilder: (BuildContext context, int index) {
-          return tiles![index];
+          return tiles[index];
         },
       ),
       if (showBottomDivider) Divider(height: 1)
