@@ -32,6 +32,7 @@ class SettingsTile extends AbstractTile {
   final _SettingsTileType _tileType;
   final TargetPlatform platform;
   final Color tileBackgroundColor;
+  final Color onPressColor;
 
   const SettingsTile({
     Key key,
@@ -53,6 +54,7 @@ class SettingsTile extends AbstractTile {
     this.switchActiveColor,
     this.platform,
     this.tileBackgroundColor,
+    this.onPressColor,
   })  : _tileType = _SettingsTileType.simple,
         onToggle = null,
         switchValue = null,
@@ -78,6 +80,7 @@ class SettingsTile extends AbstractTile {
     this.switchActiveColor,
     this.platform,
     this.tileBackgroundColor,
+    this.onPressColor,
   })  : _tileType = _SettingsTileType.switchTile,
         onTap = null,
         onPressed = null,
@@ -125,6 +128,7 @@ class SettingsTile extends AbstractTile {
         valueTextStyle: subtitleTextStyle,
         trailing: trailing,
         tileBackgroundColor: tileBackgroundColor,
+        onPressColor: onPressColor,
       );
     } else {
       return CupertinoSettingsItem(
@@ -146,6 +150,7 @@ class SettingsTile extends AbstractTile {
         subtitleTextStyle: subtitleTextStyle,
         valueTextStyle: subtitleTextStyle,
         tileBackgroundColor: tileBackgroundColor,
+        onPressColor: onPressColor,
       );
     }
   }
