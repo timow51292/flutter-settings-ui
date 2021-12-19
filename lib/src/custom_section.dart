@@ -6,7 +6,7 @@ class CustomSection extends AbstractSection {
   final Widget child;
 
   CustomSection({
-    Key key,
+    Key? key,
     @required this.child,
   }) : super(key: key);
 
