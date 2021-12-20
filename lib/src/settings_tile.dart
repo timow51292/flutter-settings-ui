@@ -7,7 +7,7 @@ import 'defines.dart';
 enum _SettingsTileType { simple, switchTile }
 
 abstract class AbstractTile extends StatelessWidget {
-  const AbstractTile({Key key}) : super(key: key);
+  const AbstractTile({Key? key}) : super(key: key);
 }
 
 class SettingsTile extends AbstractTile {
@@ -31,8 +31,8 @@ class SettingsTile extends AbstractTile {
   final Color? switchActiveColor;
   final _SettingsTileType _tileType;
   final TargetPlatform? platform;
-  final Color tileBackgroundColor;
-  final Color onPressColor;
+  final Color? tileBackgroundColor;
+  final Color? onPressColor;
 
   const SettingsTile({
     Key? key,
@@ -120,7 +120,7 @@ class SettingsTile extends AbstractTile {
         leading: leading,
         subtitle: subtitle,
         subtitleMaxLines: subtitleMaxLines,
-        switchValue: switchValue,
+        switchValue: switchValue!,
         onToggle: onToggle,
         labelTextStyle: titleTextStyle,
         switchActiveColor: switchActiveColor,
@@ -215,7 +215,7 @@ class CustomTile extends AbstractTile {
   final Widget child;
 
   CustomTile({
-    @required this.child,
+    required this.child,
   });
   @override
   Widget build(BuildContext context) {
