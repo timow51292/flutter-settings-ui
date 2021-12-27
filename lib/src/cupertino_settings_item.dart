@@ -131,9 +131,7 @@ class CupertinoSettingsItemState extends State<CupertinoSettingsItem> {
               Text(
                 widget.label ?? '',
                 overflow: TextOverflow.ellipsis,
-                style: widget.labelTextStyle?.copyWith(
-                    color:
-                        widget.enabled! ? null : CupertinoColors.inactiveGray),
+                style: widget.labelTextStyle,
               ),
           const SizedBox(height: 2.5),
           widget.subtitleWidget ??
