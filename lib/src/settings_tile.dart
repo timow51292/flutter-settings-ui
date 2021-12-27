@@ -138,7 +138,7 @@ class SettingsTile extends AbstractTile {
         subtitleWidget: subtitleWidget,
         label: title ?? '',
         labelMaxLines: titleMaxLines,
-        value: subtitle,
+        subtitle: subtitle,
         valueWidget: subtitleWidget,
         trailing: trailing,
         iosChevron: iosChevron,
